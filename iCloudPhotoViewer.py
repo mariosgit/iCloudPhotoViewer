@@ -54,7 +54,9 @@ while(1):
         download = photo.download('medium')
         with open(filename, 'wb') as opened_file:
             opened_file.write(download.raw.read())
+            opened_file.close()
 
+        system("sudo killall fbi")
         system("sudo fbi -T 2 -d /dev/fb0 -a --noverbose %s"%(filename))
 
         sleep(30)
