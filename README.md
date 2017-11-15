@@ -1,14 +1,14 @@
-iCloudPhotoViewer is a small python app that shows your iCloud photos on a RaspberryPi with TFT screen.
+iCloudPhotoViewer is a small python app, that shows your iCloud photos on a RaspberryPi with TFT screen.
 It uses the framebuffer devices /dev/fb0 as graphical output, so no X is required, thus it saves resources on your Pi.
+
 Tested with RetroPie distribution, it does not install X and emulation station can be turned off easily.
 
-* Requirements:
+# Requirements:
 
-iCloud Access module https://github.com/picklepete/pyicloud
+* iCloud Access module https://github.com/picklepete/pyicloud
+* fbi needs to be installed.
 
-fbi needs to be installed.
-
-* Usage
+# Usage
 
 export USERNAME='YOURAPPLEID'
 python iCloudPhotoViewer
