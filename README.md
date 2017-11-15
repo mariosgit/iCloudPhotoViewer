@@ -10,7 +10,10 @@ Tested with RetroPie distribution, it does not install X and emulation station c
 
 # Usage
 
+```
 export USERNAME='YOURAPPLEID'
 python iCloudPhotoViewer
+```
 
 At the moment the "fbi" app is used to show the image, it will be startet with sudo to get access to /dev/fb0, normaly this works on the pi without password prompt. If not you can change the access right to the /dev/fb0 device.
+
