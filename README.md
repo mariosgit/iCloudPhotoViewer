@@ -16,9 +16,9 @@ Go to "C"-Configuration/Tools / autostart, Choose "Boot to text console (auto lo
 # Usage
 
 ```
-export USERNAME='YOURAPPLEID'
-python iCloudPhotoViewer.py
+export SDL_FBDEV=/dev/fb0
+export SDL_VIDEODRIVER=fbcon
+sudo USERNAME="YOURAPPLEID" PASSWORD="YOURPW" python iCloudPhotoViewer.py 
 ```
 
-At the moment the "fbi" app is used to show the image, it will be startet with sudo to get access to /dev/fb0, normaly this works on the pi without password prompt. If not you can change the access right to the /dev/fb0 device.
-
+PS: This is not the savest way to store the password !

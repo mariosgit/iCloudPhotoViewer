@@ -9,6 +9,7 @@ from time import sleep
 from getpass import getpass
 
 # globals
+#  select an album, otherwise a random one is taken
 albumName = '2017 Segeln'
 
 
@@ -45,26 +46,27 @@ print pygame.display.get_driver()
 print pygame.display.Info()
 myfont = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeSans.ttf", 25)
 
+albums = []
+for album in api.photos.albums:
+    #  print "Album", album.title()
+    albums.append(album.title())
+# print albums 
 
-# for album in api.photos.albums:
-#     print "Album", album.title()
-
-
+if albumName not in albums:
+    albumName = choice(albums)
 photos = api.photos.albums[albumName]
-print type(photos)
+# print type(photos) # pyicloud.services.photos.PhotoAlbum
 photolist = []
 for photo in photos:
     photolist.append(photo)
-#for photo in photolist:
-#    print photo, photo.filename
 
-print "Fotos in list:", len(photolist)
+print "# Fotos in album \"%s\": %d" % (albumName,len(photolist))
 
 filename = "photo.jpg"
 while(1):
     photo = choice(photolist)
-    print photo.filename, photo.size, photo.dimensions
-    if photo.dimensions[0] * photo.dimensions[1] < 15000000:
+    if photo and photo.dimensions[0] * photo.dimensions[1] < 15000000:
+        print photo.filename, photo.size, photo.dimensions
         try:
             download = photo.download('medium')
             if download:
@@ -76,11 +78,11 @@ while(1):
             img = Image.open(filename)
             img.thumbnail(screen.get_size())
             draw = ImageDraw.Draw(img)
-            draw.text([19,19], "Schubbeldidubbel", fill=(000,000,000), font=myfont)
-            draw.text([21,19], "Schubbeldidubbel", fill=(000,000,000), font=myfont)
-            draw.text([21,21], "Schubbeldidubbel", fill=(000,000,000), font=myfont)
-            draw.text([19,21], "Schubbeldidubbel", fill=(000,000,000), font=myfont)
-            draw.text([20,20], "Schubbeldidubbel", fill=(255,222,000), font=myfont)
+            draw.text([19,19], albumName, fill=(000,000,000), font=myfont)
+            draw.text([21,19], albumName, fill=(000,000,000), font=myfont)
+            draw.text([21,21], albumName, fill=(000,000,000), font=myfont)
+            draw.text([19,21], albumName, fill=(000,000,000), font=myfont)
+            draw.text([20,20], albumName, fill=(255,222,000), font=myfont)
 
             # convert to pygame image
             image = pygame.image.fromstring(img.tostring(), img.size, img.mode)
