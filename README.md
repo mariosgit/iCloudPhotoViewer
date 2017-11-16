@@ -11,7 +11,8 @@ Go to "C"-Configuration/Tools / autostart, Choose "Boot to text console (auto lo
 # Requirements:
 
 * iCloud Access module https://github.com/picklepete/pyicloud
-* fbi needs to be installed.
+* pygame
+* PIL
 
 # Usage
 
