@@ -23,3 +23,4 @@ sudo USERNAME="YOURAPPLEID" PASSWORD="YOURPW" python iCloudPhotoViewer.py
 ```
 
 PS: This is not the savest way to store the password !
+PSS: Login is droped by iCloud after some time !
